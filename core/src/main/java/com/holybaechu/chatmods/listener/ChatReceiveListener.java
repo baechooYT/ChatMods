@@ -1,10 +1,8 @@
 package com.holybaechu.chatmods.listener;
 
 import com.holybaechu.chatmods.ChatModsAddon;
-import com.holybaechu.chatmods.misc.TranslationPlatform;
 import com.holybaechu.chatmods.translators.BaseTranslator;
 import com.holybaechu.chatmods.translators.GoogleTranslator;
-import com.sun.java.accessibility.util.Translator;
 import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
