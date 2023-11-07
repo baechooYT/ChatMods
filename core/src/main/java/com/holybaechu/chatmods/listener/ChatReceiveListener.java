@@ -13,8 +13,8 @@ import net.labymod.api.util.concurrent.task.Task;
 
 public class ChatReceiveListener {
   private final ChatModsAddon addon;
-  private final BaseTranslator translator;
-  private final String targetLang;
+  private BaseTranslator translator;
+  private String targetLang;
 
   public ChatReceiveListener(ChatModsAddon addon) {
     this.addon = addon;
