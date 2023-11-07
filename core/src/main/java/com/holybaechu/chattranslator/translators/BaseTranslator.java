@@ -1,6 +1,6 @@
-package com.holybaechu.chatmods.translators;
+package com.holybaechu.chattranslator.translators;
 
-import com.holybaechu.chatmods.misc.TranslationPlatform;
+import com.holybaechu.chattranslator.misc.TranslationPlatform;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

@@ -10,12 +10,12 @@ version = "1.0.0"
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 labyMod {
-    defaultPackageName = "com.holybaechu.chatmods" //change this to your main package name (used by all modules)
+    defaultPackageName = "com.holybaechu.chattranslator" //change this to your main package name (used by all modules)
     addonInfo {
-        namespace = "chatmods"
-        displayName = "ChatMods"
+        namespace = "chattranslator"
+        displayName = "ChatTranslator"
         author = "holybaechu"
-        description = "Enhanced LabyMod Communication Experience."
+        description = "Translate Chat Messages."
         minecraftVersion = "*"
         version = System.getenv().getOrDefault("VERSION", "0.0.1")
     }

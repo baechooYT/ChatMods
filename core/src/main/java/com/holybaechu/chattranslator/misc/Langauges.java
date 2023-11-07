@@ -1,4 +1,4 @@
-package com.holybaechu.chatmods.misc;
+package com.holybaechu.chattranslator.misc;
 public enum Langauges {
   af,
   sq,

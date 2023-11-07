@@ -1,7 +1,7 @@
-package com.holybaechu.chatmods.translators;
+package com.holybaechu.chattranslator.translators;
 
 import com.google.gson.Gson;
-import com.holybaechu.chatmods.misc.TranslationPlatform;
+import com.holybaechu.chattranslator.misc.TranslationPlatform;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;

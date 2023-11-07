@@ -1,7 +1,7 @@
-package com.holybaechu.chatmods;
+package com.holybaechu.chattranslator;
 
-import com.holybaechu.chatmods.misc.Langauges;
-import com.holybaechu.chatmods.misc.TranslationPlatform;
+import com.holybaechu.chattranslator.misc.Langauges;
+import com.holybaechu.chattranslator.misc.TranslationPlatform;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownWidget.DropdownSetting;
@@ -10,7 +10,7 @@ import net.labymod.api.configuration.loader.property.ConfigProperty;
 import net.labymod.api.configuration.settings.annotation.SettingSection;
 
 @ConfigName("settings")
-public class ChatModsConfiguration extends AddonConfig {
+public class ChatTranslatorConfiguration extends AddonConfig {
   @SwitchSetting
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 

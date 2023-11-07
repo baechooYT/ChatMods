@@ -1,11 +1,11 @@
-package com.holybaechu.chatmods;
+package com.holybaechu.chattranslator;
 
-import com.holybaechu.chatmods.listener.ChatReceiveListener;
+import com.holybaechu.chattranslator.listener.ChatReceiveListener;
 import net.labymod.api.addon.LabyAddon;
 import net.labymod.api.models.addon.annotation.AddonMain;
 
 @AddonMain
-public class ChatModsAddon extends LabyAddon<ChatModsConfiguration> {
+public class ChatTranslatorAddon extends LabyAddon<ChatTranslatorConfiguration> {
 
   @Override
   protected void enable() {
@@ -17,7 +17,7 @@ public class ChatModsAddon extends LabyAddon<ChatModsConfiguration> {
   }
 
   @Override
-  protected Class<ChatModsConfiguration> configurationClass() {
-    return ChatModsConfiguration.class;
+  protected Class<ChatTranslatorConfiguration> configurationClass() {
+    return ChatTranslatorConfiguration.class;
   }
 }

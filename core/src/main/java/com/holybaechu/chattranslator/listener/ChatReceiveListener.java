@@ -1,8 +1,9 @@
-package com.holybaechu.chatmods.listener;
+package com.holybaechu.chattranslator.listener;
 
-import com.holybaechu.chatmods.ChatModsAddon;
-import com.holybaechu.chatmods.translators.BaseTranslator;
-import com.holybaechu.chatmods.translators.GoogleTranslator;
+import com.holybaechu.chattranslator.ChatModsAddon;
+import com.holybaechu.chattranslator.ChatTranslatorAddon;
+import com.holybaechu.chattranslator.translators.BaseTranslator;
+import com.holybaechu.chattranslator.translators.GoogleTranslator;
 import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
@@ -14,7 +15,7 @@ public class ChatReceiveListener {
   private BaseTranslator translator;
   private String targetLang;
 
-  public ChatReceiveListener(ChatModsAddon addon) {
+  public ChatReceiveListener(ChatTranslatorAddon addon) {
     this.addon = addon;
     switch (addon.configuration().translationPlatform().get()){
       case GoogleTranslator:
