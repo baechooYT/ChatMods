@@ -15,9 +15,6 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
   @SettingSection("translator")
-
-  @SwitchSetting
-  private final ConfigProperty<Boolean> translatorEnabled = new ConfigProperty<>(false);
   @DropdownSetting
   private final ConfigProperty<TranslationPlatform> translationPlatform =
       new ConfigProperty<>(TranslationPlatform.google);
@@ -28,9 +25,6 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
-  }
-  public ConfigProperty<Boolean> translatorEnabled() {
-    return this.translatorEnabled;
   }
   public ConfigProperty<TranslationPlatform> translationPlatform() {
     return this.translationPlatform;

@@ -31,7 +31,6 @@ public class ChatReceiveListener {
     this.targetLang = addon.configuration().targetLanguage().get().name().replace("_", "-");
 
     if (!addon.configuration().enabled().get()) return;
-    if (!addon.configuration().translatorEnabled().get()) return;
 
     ChatMessage message = event.chatMessage();
 
