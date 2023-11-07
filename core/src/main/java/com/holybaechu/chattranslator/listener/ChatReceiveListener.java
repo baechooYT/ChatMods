@@ -1,6 +1,5 @@
 package com.holybaechu.chattranslator.listener;
 
-import com.holybaechu.chattranslator.ChatModsAddon;
 import com.holybaechu.chattranslator.ChatTranslatorAddon;
 import com.holybaechu.chattranslator.translators.BaseTranslator;
 import com.holybaechu.chattranslator.translators.GoogleTranslator;
@@ -11,14 +10,18 @@ import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import net.labymod.api.util.concurrent.task.Task;
 
 public class ChatReceiveListener {
-  private final ChatModsAddon addon;
+  private final ChatTranslatorAddon addon;
   private BaseTranslator translator;
   private String targetLang;
 
   public ChatReceiveListener(ChatTranslatorAddon addon) {
     this.addon = addon;
+  }
+
+  @Subscribe
+  public void onChatReceive(ChatReceiveEvent event) throws Exception {
     switch (addon.configuration().translationPlatform().get()){
-      case GoogleTranslator:
+      case google:
         this.translator = new GoogleTranslator();
         break;
       default:
@@ -26,10 +29,7 @@ public class ChatReceiveListener {
         break;
     }
     this.targetLang = addon.configuration().targetLanguage().get().name().replace("_", "-");
-  }
 
-  @Subscribe
-  public void onChatReceive(ChatReceiveEvent event) throws Exception {
     if (!addon.configuration().enabled().get()) return;
     if (!addon.configuration().translatorEnabled().get()) return;
 

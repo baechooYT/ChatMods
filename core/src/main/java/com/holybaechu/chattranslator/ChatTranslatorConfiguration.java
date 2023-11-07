@@ -20,7 +20,7 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   private final ConfigProperty<Boolean> translatorEnabled = new ConfigProperty<>(false);
   @DropdownSetting
   private final ConfigProperty<TranslationPlatform> translationPlatform =
-      new ConfigProperty<>(TranslationPlatform.GoogleTranslator);
+      new ConfigProperty<>(TranslationPlatform.google);
   @DropdownSetting
   private final ConfigProperty<Langauges> targetLanguage =
       new ConfigProperty<>(Langauges.en);

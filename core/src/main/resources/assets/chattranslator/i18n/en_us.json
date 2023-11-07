@@ -1,7 +1,7 @@
 {
-  "chatmods": {
+  "chattranslator": {
     "settings": {
-      "name": "ChatMods",
+      "name": "ChatTranslator",
       "enabled": {
         "name": "Enabled"
       },
@@ -12,7 +12,7 @@
       "translationPlatform": {
         "name": "Translation Platform",
         "entries": {
-          "GoogleTranslator": "Google Translator"
+          "google": "Google Translator"
         }
       },
       "targetLanguage": {
