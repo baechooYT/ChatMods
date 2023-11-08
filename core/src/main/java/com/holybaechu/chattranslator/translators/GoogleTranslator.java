@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GoogleTranslator extends BaseTranslator {
-  public String translate(TranslationPlatform platform, String sourceLang, String targetLanguage, String input)
+  public String translate(String sourceLang, String targetLanguage, String input)
       throws Exception {
     String UrlString = "https://";
 

@@ -58,14 +58,14 @@ public class ChatReceiveListener {
       }else if (getGroupFromRegex(hypixelDefaultRegex, finalMessageStr, 2) != null){
         finalMessageStr = getGroupFromRegex(hypixelDefaultRegex, finalMessageStr, 2);
       }
-    }else{
+    }else if(addon.configuration().doNotTranslateNonPlayerMessages().get()){
       return;
     }
 
     String finalMessageStr1 = finalMessageStr;
     Task.builder(() -> {
       try {
-        String translation = translator.translate(addon.configuration().translationPlatform().get(), "auto", targetLang,
+        String translation = translator.translate("auto", targetLang,
             finalMessageStr1);
 
         String finalTranslation = translation;

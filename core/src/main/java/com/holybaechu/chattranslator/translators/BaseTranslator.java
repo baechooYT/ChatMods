@@ -23,7 +23,7 @@ public class BaseTranslator {
     return result.toString();
   }
 
-  public String translate(TranslationPlatform platform, String sourceLang, String targetLanguage, String input)
+  public String translate(String sourceLang, String targetLanguage, String input)
       throws Exception {
     return "Translation";
   }
