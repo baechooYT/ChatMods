@@ -1,6 +1,6 @@
 package com.holybaechu.chattranslator;
 
-import com.holybaechu.chattranslator.misc.Langauges;
+import com.holybaechu.chattranslator.misc.Languages;
 import com.holybaechu.chattranslator.misc.TranslationPlatform;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
@@ -15,27 +15,26 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   private final ConfigProperty<Boolean> enabled = new ConfigProperty<>(true);
 
   @SettingSection("translator")
-
-  @SwitchSetting
-  private final ConfigProperty<Boolean> translatorEnabled = new ConfigProperty<>(false);
   @DropdownSetting
   private final ConfigProperty<TranslationPlatform> translationPlatform =
       new ConfigProperty<>(TranslationPlatform.google);
   @DropdownSetting
-  private final ConfigProperty<Langauges> targetLanguage =
-      new ConfigProperty<>(Langauges.en);
+  private final ConfigProperty<Languages> targetLanguage =
+      new ConfigProperty<>(Languages.en);
+  @SwitchSetting
+  private final ConfigProperty<Boolean> doNotTranslateNonPlayerMessages = new ConfigProperty<>(false);
 
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
   }
-  public ConfigProperty<Boolean> translatorEnabled() {
-    return this.translatorEnabled;
-  }
   public ConfigProperty<TranslationPlatform> translationPlatform() {
     return this.translationPlatform;
   }
-  public ConfigProperty<Langauges> targetLanguage() {
+  public ConfigProperty<Languages> targetLanguage() {
     return this.targetLanguage;
+  }
+  public ConfigProperty<Boolean> doNotTranslateNonPlayerMessages() {
+    return this.doNotTranslateNonPlayerMessages;
   }
 }

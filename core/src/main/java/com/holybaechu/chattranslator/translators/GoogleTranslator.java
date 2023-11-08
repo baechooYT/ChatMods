@@ -13,7 +13,7 @@ public class GoogleTranslator extends BaseTranslator {
 
       UrlString+="translate.googleapis.com/translate_a/single?client=gtx&dt=t&dj=1&source=input";
 
-    UrlString+="&sl="+ URLEncoder.encode("auto", "UTF-8");
+    UrlString+="&sl="+ URLEncoder.encode(sourceLang, "UTF-8");
     UrlString+="&tl="+URLEncoder.encode(targetLanguage, "UTF-8");
     UrlString+="&q="+URLEncoder.encode(input, "UTF-8");
 

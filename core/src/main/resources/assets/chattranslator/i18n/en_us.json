@@ -6,9 +6,11 @@
         "name": "Enabled"
       },
 
-      "translatorEnabled": {
-        "name": "Enabled"
+      "doNotTranslateNonPlayerMessages": {
+        "name": "Do not translate non-player messages",
+        "description": "Doesn't automatically translate non-player messages (Could not work on some servers)"
       },
+
       "translationPlatform": {
         "name": "Translation Platform",
         "entries": {
@@ -157,7 +159,7 @@
 
       "header": {
         "translator": {
-          "name": "Chat Translator"
+          "name": "Translator"
         }
       }
     }
