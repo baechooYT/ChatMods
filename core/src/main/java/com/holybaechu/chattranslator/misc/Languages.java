@@ -1,5 +1,5 @@
 package com.holybaechu.chattranslator.misc;
-public enum Langauges {
+public enum Languages {
   af,
   sq,
   am,
