@@ -3,7 +3,6 @@ package com.holybaechu.chattranslator.listener;
 import com.holybaechu.chattranslator.ChatTranslatorAddon;
 import com.holybaechu.chattranslator.ChatTranslatorConfiguration;
 import com.holybaechu.chattranslator.translators.BaseTranslator;
-import com.holybaechu.chattranslator.translators.GoogleTranslator;
 import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
@@ -38,8 +37,6 @@ public class ChatReceiveListener {
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
-    if (!config.enabled().get()) return;
-
     ChatMessage message = event.chatMessage();
     GameProfile sender = message.getSenderProfile();
     String messageStr = message.getFormattedText();
