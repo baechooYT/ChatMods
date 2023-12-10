@@ -15,14 +15,17 @@ import java.util.regex.Pattern;
 
 public class ChatReceiveListener {
   private final ChatTranslatorConfiguration config;
-  private BaseTranslator translator;
-  private String targetLang;
+  private static BaseTranslator translator;
 
   private final Pattern mcDefaultRegex = Pattern.compile("^(\\<.*\\> )(.*)");
   private final Pattern hypixelDefaultRegex = Pattern.compile("^(.*\\: )(.*)");
 
   public ChatReceiveListener(ChatTranslatorAddon addon) {
     this.config = addon.configuration();
+  }
+
+  public static void setTranslator(BaseTranslator newTranslator) {
+    translator = newTranslator;
   }
 
   private String getGroupFromRegex(Pattern regex, String input, int n) {
@@ -35,13 +38,6 @@ public class ChatReceiveListener {
 
   @Subscribe
   public void onChatReceive(ChatReceiveEvent event) {
-    switch (config.translationPlatform().get()) {
-      default:
-        this.translator = new GoogleTranslator();
-        break;
-    }
-    this.targetLang = config.targetLanguage().get().name().replace("_", "-");
-
     if (!config.enabled().get()) return;
 
     ChatMessage message = event.chatMessage();
@@ -62,7 +58,7 @@ public class ChatReceiveListener {
     String finalMessageStr1 = finalMessageStr;
     Task.builder(() -> {
       try {
-        String finalTranslation = translator.translate("auto", targetLang, finalMessageStr1);
+        String finalTranslation = translator.translate("auto", config.targetLanguage(), finalMessageStr1);
 
         if (sender != null){
           if (getGroupFromRegex(mcDefaultRegex, messageStr, 1) != null){
