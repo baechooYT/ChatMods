@@ -60,10 +60,10 @@ public class ChatReceiveListener {
       try {
         String finalTranslation = translator.translate("auto", config.targetLanguage(), finalMessageStr1);
 
-        if (sender != null){
-          if (getGroupFromRegex(mcDefaultRegex, messageStr, 1) != null){
+        if (sender != null) {
+          if (getGroupFromRegex(mcDefaultRegex, messageStr, 1) != null) {
             finalTranslation = getGroupFromRegex(mcDefaultRegex, messageStr, 1) + finalTranslation;
-          } else if (getGroupFromRegex(hypixelDefaultRegex, messageStr, 1) != null){
+          } else if (getGroupFromRegex(hypixelDefaultRegex, messageStr, 1) != null) {
             finalTranslation = getGroupFromRegex(hypixelDefaultRegex, messageStr, 1) + finalTranslation;
           }
         }
