@@ -20,7 +20,7 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   @SettingSection("translator")
   @DropdownSetting
   private final ConfigProperty<TranslationPlatform> translationPlatform =
-      new ConfigProperty<>(TranslationPlatform.google).addChangeListener((value) -> {
+      new ConfigProperty<>(TranslationPlatform.GOOGLE).addChangeListener((value) -> {
         BaseTranslator translator = switch (value) {
           // if you want to add a translator just use "case <enumValue> -> new <Class>();"
 
