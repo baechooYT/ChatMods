@@ -1,6 +1,7 @@
 package com.holybaechu.chattranslator.translators;
 
 import com.google.gson.Gson;
+import net.labymod.api.util.logging.Logging;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -20,11 +21,11 @@ public class GoogleTranslator extends BaseTranslator {
     );
 
     Response response = gson.fromJson(getResponse(urlString), Response.class);
-    List<Map<String, String>> sentences = response.sentences;
+    List<Map<String, Object>> sentences = response.sentences;
 
     if (sentences != null && !sentences.isEmpty()) {
       StringBuilder translation = new StringBuilder();
-      for(Map<String, String> sentence : sentences) {
+      for(Map<String, Object> sentence : sentences) {
         if(sentence.get("trans") == null) continue;
         translation.append(sentence.get("trans"));
       }
@@ -35,6 +36,6 @@ public class GoogleTranslator extends BaseTranslator {
   }
 
   private static class Response {
-    public List<Map<String, String>> sentences;
+    public List<Map<String, Object>> sentences;
   }
 }
