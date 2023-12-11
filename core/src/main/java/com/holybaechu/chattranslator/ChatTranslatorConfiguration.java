@@ -30,7 +30,10 @@ public class ChatTranslatorConfiguration extends AddonConfig {
         ChatReceiveListener.setTranslator(translator);
       });
   @DropdownSetting
-  private final ConfigProperty<Language> targetLanguage = new ConfigProperty<>(Language.EN);
+  private final ConfigProperty<Language> targetLanguage =
+      new ConfigProperty<>(Language.EN).addChangeListener((value) -> {
+        ChatReceiveListener.setTargetLanguage(value);
+      });
   @SwitchSetting
   private final ConfigProperty<Boolean> doNotTranslateNonPlayerMessages =
       new ConfigProperty<>(false);

@@ -2,19 +2,23 @@ package com.holybaechu.chattranslator.listener;
 
 import com.holybaechu.chattranslator.ChatTranslatorAddon;
 import com.holybaechu.chattranslator.ChatTranslatorConfiguration;
+import com.holybaechu.chattranslator.misc.Language;
 import com.holybaechu.chattranslator.translators.BaseTranslator;
+import com.holybaechu.chattranslator.translators.GoogleTranslator;
 import net.labymod.api.client.chat.ChatMessage;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.chat.ChatReceiveEvent;
 import net.labymod.api.mojang.GameProfile;
 import net.labymod.api.util.concurrent.task.Task;
+import net.labymod.api.util.logging.Logging;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ChatReceiveListener {
   private final ChatTranslatorConfiguration config;
-  private static BaseTranslator translator;
+  private static BaseTranslator translator = new GoogleTranslator();
+  private static Language targetLanguage = Language.EN;
 
   private final Pattern mcDefaultRegex = Pattern.compile("^(\\<.*\\> )(.*)");
   private final Pattern hypixelDefaultRegex = Pattern.compile("^(.*\\: )(.*)");
@@ -25,6 +29,10 @@ public class ChatReceiveListener {
 
   public static void setTranslator(BaseTranslator newTranslator) {
     translator = newTranslator;
+  }
+
+  public static void setTargetLanguage(Language newLanguage) {
+    targetLanguage = newLanguage;
   }
 
   private String getGroupFromRegex(Pattern regex, String input, int n) {
@@ -56,7 +64,7 @@ public class ChatReceiveListener {
     String finalMessageStr1 = finalMessageStr;
     Task.builder(() -> {
       try {
-        String finalTranslation = translator.translate("auto", config.targetLanguage(), finalMessageStr1);
+        String finalTranslation = translator.translate("auto", String.valueOf(targetLanguage), finalMessageStr1);
 
         if (sender != null) {
           if (getGroupFromRegex(mcDefaultRegex, messageStr, 1) != null) {
