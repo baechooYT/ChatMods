@@ -1,7 +1,10 @@
 package com.holybaechu.chattranslator;
 
-import com.holybaechu.chattranslator.misc.Languages;
+import com.holybaechu.chattranslator.listener.ChatReceiveListener;
+import com.holybaechu.chattranslator.misc.Language;
 import com.holybaechu.chattranslator.misc.TranslationPlatform;
+import com.holybaechu.chattranslator.translators.BaseTranslator;
+import com.holybaechu.chattranslator.translators.GoogleTranslator;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.dropdown.DropdownWidget.DropdownSetting;
@@ -17,22 +20,27 @@ public class ChatTranslatorConfiguration extends AddonConfig {
   @SettingSection("translator")
   @DropdownSetting
   private final ConfigProperty<TranslationPlatform> translationPlatform =
-      new ConfigProperty<>(TranslationPlatform.google);
+      new ConfigProperty<>(TranslationPlatform.GOOGLE).addChangeListener((value) -> {
+        BaseTranslator translator = switch (value) {
+          // if you want to add a translator just use "case <enumValue> -> new <Class>();"
+
+          default -> new GoogleTranslator();
+        };
+
+        ChatReceiveListener.setTranslator(translator);
+      });
   @DropdownSetting
-  private final ConfigProperty<Languages> targetLanguage =
-      new ConfigProperty<>(Languages.en);
+  private final ConfigProperty<Language> targetLanguage = new ConfigProperty<>(Language.EN);
   @SwitchSetting
-  private final ConfigProperty<Boolean> doNotTranslateNonPlayerMessages = new ConfigProperty<>(false);
+  private final ConfigProperty<Boolean> doNotTranslateNonPlayerMessages =
+      new ConfigProperty<>(false);
 
   @Override
   public ConfigProperty<Boolean> enabled() {
     return this.enabled;
   }
-  public ConfigProperty<TranslationPlatform> translationPlatform() {
-    return this.translationPlatform;
-  }
-  public ConfigProperty<Languages> targetLanguage() {
-    return this.targetLanguage;
+  public String targetLanguage() {
+    return targetLanguage.get().name().replace("_", "-");
   }
   public ConfigProperty<Boolean> doNotTranslateNonPlayerMessages() {
     return this.doNotTranslateNonPlayerMessages;

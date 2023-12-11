@@ -1,30 +1,40 @@
 package com.holybaechu.chattranslator.translators;
 
 import com.google.gson.Gson;
-import com.holybaechu.chattranslator.misc.TranslationPlatform;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
 public class GoogleTranslator extends BaseTranslator {
-  public String translate(String sourceLang, String targetLanguage, String input)
-      throws Exception {
-    String UrlString = "https://";
 
-      UrlString+="translate.googleapis.com/translate_a/single?client=gtx&dt=t&dj=1&source=input";
+  private final Gson gson = new Gson();
 
-    UrlString+="&sl="+ URLEncoder.encode(sourceLang, "UTF-8");
-    UrlString+="&tl="+URLEncoder.encode(targetLanguage, "UTF-8");
-    UrlString+="&q="+URLEncoder.encode(input, "UTF-8");
+  public String translate(String sourceLang, String targetLanguage, String input) throws Exception {
+    String urlString = String.format(
+        "https://%s&sl=%s&tl=%s&q=%s",
+        "translate.googleapis.com/translate_a/single?client=gtx&dt=t&dj=1&source=input",
+        URLEncoder.encode(sourceLang, StandardCharsets.UTF_8),
+        URLEncoder.encode(targetLanguage, StandardCharsets.UTF_8),
+        URLEncoder.encode(input, StandardCharsets.UTF_8)
+    );
 
-    Gson gson = new Gson();
-    Map<String, Object> responseMap = gson.fromJson(getResponse(UrlString), Map.class);
+    Response response = gson.fromJson(getResponse(urlString), Response.class);
+    List<Map<String, String>> sentences = response.sentences;
 
-    List<Map<String, String>> sentences = (List<Map<String, String>>) responseMap.get("sentences");
     if (sentences != null && !sentences.isEmpty()) {
-      return sentences.get(0).get("trans");
+      StringBuilder translation = new StringBuilder();
+      for(Map<String, String> sentence : sentences) {
+        if(sentence.get("trans") == null) continue;
+        translation.append(sentence.get("trans"));
+      }
+      return translation.toString();
     } else {
       throw new Exception("Translation not found in the response.");
     }
+  }
+
+  private static class Response {
+    public List<Map<String, String>> sentences;
   }
 }
