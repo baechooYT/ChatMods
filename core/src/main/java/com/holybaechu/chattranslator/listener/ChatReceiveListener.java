@@ -30,6 +30,7 @@ public class ChatReceiveListener {
   private String getGroupFromRegex(Pattern regex, String input, int n) {
     if (input.matches(regex.pattern())) {
       Matcher m = regex.matcher(input);
+      m.find();
       return m.group(n);
     }
     return null;
