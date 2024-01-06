@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.holybaechu"
-version = "1.0.2"
+version = "1.0.3"
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
@@ -17,7 +17,7 @@ labyMod {
         author = "holybaechu"
         description = "Translate Chat Messages."
         minecraftVersion = "*"
-        version = System.getenv().getOrDefault("VERSION", "0.0.1")
+        version = System.getenv().getOrDefault("VERSION", "1.0.3")
     }
 
     minecraft {
