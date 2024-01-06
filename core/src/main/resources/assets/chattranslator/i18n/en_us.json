@@ -6,11 +6,6 @@
         "name": "Enabled"
       },
 
-      "doNotTranslateNonPlayerMessages": {
-        "name": "Do not translate non-player messages",
-        "description": "Do not automatically translate non-player messages (May not work on many servers)"
-      },
-
       "translationPlatform": {
         "name": "Translation Platform",
         "entries": {

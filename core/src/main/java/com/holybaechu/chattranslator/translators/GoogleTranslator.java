@@ -1,7 +1,6 @@
 package com.holybaechu.chattranslator.translators;
 
 import com.google.gson.Gson;
-import net.labymod.api.util.logging.Logging;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;

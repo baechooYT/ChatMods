@@ -11,7 +11,7 @@ public class ChatTranslatorAddon extends LabyAddon<ChatTranslatorConfiguration> 
   protected void enable() {
     this.registerSettingCategory();
 
-    this.registerListener(new ChatReceiveListener(this));
+    this.registerListener(new ChatReceiveListener());
 
     this.logger().info("Enabled the Addon");
   }
