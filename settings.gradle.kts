@@ -1,7 +1,7 @@
 rootProject.name = "ChatTranslator"
 
 pluginManagement {
-    val labyGradlePluginVersion = "0.3.38"
+    val labyGradlePluginVersion = "0.3.43"
     plugins {
         id("net.labymod.gradle") version (labyGradlePluginVersion)
     }
