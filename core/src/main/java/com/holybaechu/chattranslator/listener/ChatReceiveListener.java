@@ -32,8 +32,6 @@ public class ChatReceiveListener {
       }
 
       if (child instanceof TextComponent textComponent) {
-        Logging.getLogger().info(textComponent.getText());
-
         if (Objects.equals(textComponent.getText(), ""))
           continue;
         if (Objects.equals(textComponent.getText(), " "))
